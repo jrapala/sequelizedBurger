@@ -1,0 +1,29 @@
+body {
+	background-color: #f5c961;
+}
+
+#headerImg {
+	position: relative;
+	top: -40px;
+	margin: 0 auto;
+}
+
+#headline {
+	position: relative;
+	top: -100px;
+	color: red;
+}
+
+#burgerLists {
+	list-style: none;
+	margin-top: -40px;
+}
+
+#submitBurger {
+	margin-top: 20px;
+}
+
+#message {
+	margin-top: 10px;
+}
+
