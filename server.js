@@ -29,14 +29,8 @@
 	app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 	app.set("view engine", "handlebars");
 
-	// // Route Config
-	// var routes = require("./controllers/burgers_controller.js");
-	// app.use("/", routes);
-	// app.listen(PORT);
-
 	// Routes
 	// =============================================================
-	//require("./controllers/burgers_controller.js")(app);
 	var routes = require("./controllers/burgers_controller.js");
 	app.use("/", routes);
 	app.use("/api/burgers", routes);
