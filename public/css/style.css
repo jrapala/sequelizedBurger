@@ -19,11 +19,31 @@ body {
 	margin-top: -40px;
 }
 
+.burgerName {
+	max-width: 200px;
+	max-height: 40px;
+}
+
+#userBurger {
+	margin-top: 20px;
+}
+
 #submitBurger {
 	margin-top: 20px;
 }
 
 #message {
 	margin-top: 10px;
+}
+
+.customerField {
+	max-width: 120px;
+	margin-bottom: 0px;
+	font-size: .85em;
+}
+
+.eatBurger {
+	height: 30px;
+	margin: 5 auto;
 }
 

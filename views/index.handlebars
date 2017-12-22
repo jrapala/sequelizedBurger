@@ -1,41 +1,49 @@
-    <!-- Uneaten Burgers
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
+<div class="container">
+  <div class="row" id="burgerLists">
+    
+    {{!-- Uneaten Burgers --}}
+    <div class="col-md-5 col-md-offset-1">
       <ul class="list-group" id="uneatenBurgers">
         {{#each burgers}}
-          {{#unless devoured}}
-          <form action="/api/burgers/{{this.id}}?_method=PUT" method="POST">
-            <li class="list-group-item">{{this.id}}. {{this.burger_name}}
-                  <!-- Button must contain id as a data attribute so you can update the burger in database -->
-                  <button data-id="{{this.id}}" class="pull-right eatBurger btn btn-default btn-xs">Devour It!</button>
-              </form>
-            </li>
-          {{/unless}}
+        {{#unless devoured}}
+        <form action="/api/burgers/{{this.id}}?_method=PUT" method="POST">
+            {{!-- Uneaten Burger Names --}}
+            <div class="col-md-7">
+              <li class="list-group-item burgerName">{{this.id}}. {{this.burger_name}}</li>
+            </div>
+            <!-- These must contain id as a data attribute so you can update the burger in database -->
+            {{!-- Uneaten Burger Fields --}}
+            <div class="col-md-3">
+              <input data-id="{{this.id}}" type="text" class="form-control customerField" id="customerName" placeholder="Customer?"></input>
+            </div>
+            {{!-- Uneaten Burger Buttons --}}
+            <div class="col-md-2">
+              <button data-id="{{this.id}}" class="eatBurger btn btn-default btn-xs">Devour It!</button>
+            </div>
+        </form>
+        {{/unless}}
         {{/each}}
       </ul>
     </div>
 
-    <!-- Eaten Burgers
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-    <div class="col-md-5">
+    {{!-- Eaten Burgers --}}
+    <div class="col-md-5 col-md-offset-1">
       <ul class="list-group" id="eatenBurgers">
-        {{#each burgers}}
-          {{#if devoured}}
-            <li class="list-group-item bg-light text-muted disabled">{{this.id}}. {{this.burger_name}}</li>
-          {{/if}}
-        {{/each}}    
+      {{#each burgers}}
+      {{#if devoured}}
+        <li class="list-group-item bg-light text-muted disabled burgerName">{{this.id}}. {{this.burger_name}}</li>
+      {{/if}}
+      {{/each}}    
       </ul>
     </div>
   </div>
-</div>
 
 <!-- Burger Form
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 <div class="container text-center">
   <div class="row" id="burgerForm">
-    <div class="col-lg-4 col-lg-offset-4">
+    <div class="col-md-4 col-md-offset-4">
       <!-- Form that will post to /api/burgers -->
       <form id="burgerForm" action="/api/burgers" method="POST">
         <textarea id="userBurger" class="form-control" rows="5" name="burger_name" placeholder="Yummy Hamburger" required></textarea>
@@ -44,4 +52,5 @@
       </form>
     <p id="message">Enter a burger you want to eat and click the "submit" button.</p>
   </div>
+</div>
 </div>
