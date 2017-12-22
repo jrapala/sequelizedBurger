@@ -17,7 +17,7 @@
         var hbsObject = {
             burgers: dbBurger
         };
-        return res.render("index", hbsObject);
+        res.render("index", hbsObject);
       });
   });
 
