@@ -2,7 +2,7 @@
   <div class="row" id="burgerLists">
     
     {{!-- Uneaten Burgers --}}
-    <div class="col-md-5 col-md-offset-1">
+    <div class="col-md-5 col-md-offset-1 col-md-12">
       <ul class="list-group" id="uneatenBurgers">
         {{#each burgers}}
         {{#unless devoured}}
@@ -14,7 +14,7 @@
             <!-- These must contain id as a data attribute so you can update the burger in database -->
             {{!-- Uneaten Burger Fields --}}
             <div class="col-md-3">
-              <input data-id="{{this.id}}" type="text" class="form-control customerField" id="customerName" placeholder="Customer?"></input>
+              <input data-id="{{this.id}}" type="text" name="customer_name" class="form-control customerField" id="customerName" placeholder="Customer?"></input>
             </div>
             {{!-- Uneaten Burger Buttons --}}
             <div class="col-md-2">

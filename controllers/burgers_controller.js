@@ -35,17 +35,33 @@
   router.put("/api/burgers/:id", function(req, res) {
     // Get parameter 
     var burgerID = req.params.id;
-    // Update item in database
-    db.Burger.update({
-      devoured: true
-    },{
-      where: {
-        id: burgerID
-      }
+    // Add customer's name to Customer table
+    db.Customer.create({
+        customer_name: req.body.customer_name, 
+        burger_id: parseInt(burgerID)
     })
     .then(function(dbBurger) {
-      res.redirect('/');
-    })
+      // Find burger with same ID
+      db.Burger.findOne({
+        where:
+          {
+            id: burgerID
+          }
+      })
+      .then(function(burgerEaten) {
+        // Update item in Burger table
+        burgerEaten.update({
+          devoured: true,
+        },{
+          where: {
+            id: burgerID
+          }
+        })
+        .then(function(dbBurger) {
+          res.redirect('/');
+        })
+      });
+    });
   });
 
   // Export routes to server.js 

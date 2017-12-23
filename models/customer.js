@@ -7,8 +7,8 @@
         type: DataTypes.STRING,
         allowNull: false
   	},
-      burger_eaten: {
-      	type: DataTypes.STRING
+      burger_id: {
+      	type: DataTypes.INTEGER
       }
     }, {
     timestamps: false
