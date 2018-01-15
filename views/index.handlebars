@@ -31,7 +31,7 @@
       <ul class="list-group" id="eatenBurgers">
       {{#each burgers}}
       {{#if devoured}}
-        <li class="list-group-item bg-light text-muted disabled burgerName">{{this.id}}. {{this.burger_name}}</li>
+        <li class="list-group-item bg-light text-muted disabled burgerName">{{this.id}}. {{this.burger_name}} (Eaten by {{this.Customer.customer_name}} )</li>
       {{/if}}
       {{/each}}    
       </ul>

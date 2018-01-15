@@ -20,10 +20,10 @@
 	// App Middleware
 	app.use(methodOverride('_method'));
 	app.use(bodyParser.urlencoded({ extended: false }));
-	app.use(bodyParser.json());
+	app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 	app.use(express.static(process.cwd() + "/public"));
 	app.use(bodyParser.text());
-	app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
 
 	// Handlebars Config
 	app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -33,7 +33,7 @@
 	// =============================================================
 	var routes = require("./controllers/burgers_controller.js");
 	app.use("/", routes);
-	app.use("/api/burgers", routes);
+	// app.use("/api/burgers", routes);
 
 	// Starting our Express app
 	// =============================================================
