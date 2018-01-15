@@ -17,9 +17,8 @@
   // Routes
   // ======================================
 
-  // Display all burgers in the database
+  // Display all burgers in the database in alphabetical order
   router.get("/", function(req, res) {
-    // Select all items in database
     db.Burger.findAll({
       include: [db.Customer],
       order: [['burger_name', 'ASC']]
@@ -33,14 +32,17 @@
     });
   });
 
-  // Add a new burger to the database
+  // Add a new burger to the database, with placeholder customer name and burger name
   router.post("/api/burgers", function(req, res) {
+    // Placeholder name
     var customerName = "TBD";
+    // Create new entry in Customer table
     db.Customer.create({
       customer_name: customerName
     })
     .then(function(data) {
       var customerId = data.dataValues.id;
+      // Create new entry in Burger table, with associated customer
       db.Burger.create({
         burger_name: req.body.burger_name,
         CustomerId: customerId
@@ -57,7 +59,7 @@
     var customerName = req.body.customer_name;
     var burgerID = req.params.id;
 
-    // Update state of burger
+    // Update burger table with devoured state
     db.Burger.update({
       devoured: true
     }, {
@@ -73,7 +75,7 @@
         }
       })
       .then(function(dbBurger) {
-        // Get customer ID of that burger and update the name of the associated custmer
+        // Get customer ID of that burger and update the name of the associated customer
         var customerId = dbBurger.dataValues.CustomerId;   
         db.Customer.update({      
           customer_name: customerName

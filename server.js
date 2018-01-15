@@ -33,7 +33,6 @@
 	// =============================================================
 	var routes = require("./controllers/burgers_controller.js");
 	app.use("/", routes);
-	// app.use("/api/burgers", routes);
 
 	// Starting our Express app
 	// =============================================================
