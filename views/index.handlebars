@@ -9,7 +9,7 @@
         <form action="/api/burgers/{{this.id}}?_method=PUT" method="POST">
             {{!-- Uneaten Burger Names --}}
             <div class="col-md-7">
-              <li class="list-group-item burgerName">{{this.id}}. {{this.burger_name}}</li>
+              <li class="list-group-item burgerName">{{this.burger_name}}</li>
             </div>
             <!-- These must contain id as a data attribute so you can update the burger in database -->
             {{!-- Uneaten Burger Fields --}}
@@ -31,7 +31,7 @@
       <ul class="list-group" id="eatenBurgers">
       {{#each burgers}}
       {{#if devoured}}
-        <li class="list-group-item bg-light text-muted disabled burgerName">{{this.id}}. {{this.burger_name}} (Eaten by {{this.Customer.customer_name}} )</li>
+        <li class="list-group-item bg-light text-muted disabled burgerName">{{this.burger_name}} (Eaten by {{this.Customer.customer_name}} )</li>
       {{/if}}
       {{/each}}    
       </ul>

@@ -21,7 +21,8 @@
   router.get("/", function(req, res) {
     // Select all items in database
     db.Burger.findAll({
-      include: [db.Customer]
+      include: [db.Customer],
+      order: [['burger_name', 'ASC']]
     })
     .then(function(dbBurger) {
       // Create Handlebars object
