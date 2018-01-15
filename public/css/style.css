@@ -47,3 +47,6 @@ body {
 	margin: 5 auto;
 }
 
+#eatenBurgers li {	
+	min-width: 350px;
+}
