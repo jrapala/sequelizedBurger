@@ -28,7 +28,6 @@
       var hbsObject = {
           burgers: dbBurger
       };
-      //console.log(hbsObject.burgers.Customer);
       res.render("index", hbsObject);
     });
   });
@@ -40,7 +39,6 @@
       customer_name: customerName
     })
     .then(function(data) {
-      console.log(data);
       var customerId = data.dataValues.id;
       db.Burger.create({
         burger_name: req.body.burger_name,
@@ -54,8 +52,11 @@
 
   // Eat a burger
   router.put("/api/burgers/:id", function(req, res) {
-    // Get parameter 
+    // Get parameters and form data
+    var customerName = req.body.customer_name;
     var burgerID = req.params.id;
+
+    // Update state of burger
     db.Burger.update({
       devoured: true
     }, {
@@ -63,9 +64,28 @@
         id: burgerID
       }
     })
-    .then(function() {
-      res.redirect("/");
+    .then(function(data) {
+      // Find burger that was just updated
+      db.Burger.findOne({
+        where: {
+          id: burgerID
+        }
+      })
+      .then(function(dbBurger) {
+        // Get customer ID of that burger and update the name of the associated custmer
+        var customerId = dbBurger.dataValues.CustomerId;   
+        db.Customer.update({      
+          customer_name: customerName
+        }, {
+          where: {
+            id: customerId
+          }
+        })
+        .then(function() {
+          res.redirect("/");
+        })
     })
+  })
   });
 
   // Export routes to server.js 
